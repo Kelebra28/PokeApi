@@ -1,47 +1,33 @@
-let namePoke = document.getElementById('namePoke')
-let imgFront = document.getElementById('front')
-let imgBack = document.getElementById('back')
 
 //https://pokeapi.co/api/v2/pokemon/132/
 //-----          URL BASE ----------/iformacion-pokemon
-const url = 'https://pokeapi.co/api/v2/pokemon?limit=50'
+const url = 'https://pokeapi.co/api/v2/pokemon?limit=10'
+let generateBtn = document.getElementById('gerate-pokemon') 
 
-const dataPokemons = () => {
+const fetchPokemons = () => {
     fetch(url)
     .then(response => response.json())
     .then((allPokemon)=> {
         console.log(allPokemon)
-        // allPokemon.result.forEach((pokemon) => {
-        //     fetchPokemonData(pokemon)
-        // })
+        allPokemon.results.forEach( pokemon => {
+            fetchPokemonData(pokemon)
+        });
     })
 }
 
-dataPokemons()
 
-
-const dataPokemon = () => {
-    fetch('https://pokeapi.co/api/v2/pokemon/1/')
+const fetchPokemonData = (pokemon) => {
+    let urlPoke = pokemon.url
+    fetch(urlPoke)
     .then(response => response.json())
-    .then((Pokemon)=> {
-        console.log(Pokemon)
-        // allPokemon.result.forEach((pokemon) => {
-        //     fetchPokemonData(pokemon)
-        // })
+    .then((pokeData) => {
+        console.log(pokeData)
     })
 }
-dataPokemon()
 
-// const fetchPokemonData = (pokemon) => {
-//     let urlP = pokemon.url
-//     fetch(urlP)
-//     .then(response => response.json)
-//     .then((pokeData) => {
-//       console.log(pokeData)
-//     })
-// }
 
-// const renderPokemon = () => {
+const makeEverything = () => {
+    fetchPokemons()
+}
 
-// }
-// dataPokemon()
+generateBtn.addEventListener('click', makeEverything)

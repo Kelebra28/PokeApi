@@ -1,6 +1,6 @@
 //https://pokeapi.co/api/v2/pokemon/132/
 //-----          URL BASE ----------/iformacion-pokemon
-const url = 'https://pokeapi.co/api/v2/pokemon?limit=10'
+const url = 'https://pokeapi.co/api/v2/pokemon?limit=20'
 let generateBtn = document.getElementById('gerate-pokemon')
 let allPokemonContainer = document.getElementById('poke-container') 
 
@@ -35,14 +35,20 @@ const makePokemon = (pokeData) => {
     let pokeNumber = document.createElement('p')
     pokeNumber.innerHTML = '#' + pokeData.id
 
-    pokeContainer.append(pokeName, pokeNumber)
+    let imgFront = document.createElement('img')
+    imgFront.src = pokeData.sprites.front_default
+
+    let imgBack = document.createElement('img')
+    imgBack.src = pokeData.sprites.back_default
+
+    pokeContainer.append(pokeName, pokeNumber, imgFront, imgBack)
 
     allPokemonContainer.appendChild(pokeContainer)
 
 }
 
-
 const makeEverything = () => {
+
     fetchPokemons()
 }
 

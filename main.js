@@ -30,6 +30,7 @@ const makePokemon = (pokeData) => {
 
     let pokeContainer = document.createElement('div')
     pokeContainer.classList.add('poke-container')
+    pokeContainer.classList.add('animate__fadeOutDown')
 
     let pokeContainerIMG = document.createElement('div')
     pokeContainerIMG.classList.add('img-poke')
